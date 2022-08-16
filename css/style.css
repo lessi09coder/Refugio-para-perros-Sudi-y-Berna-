@@ -1,11 +1,37 @@
+.paleta de colores {
+    background: #2C3333;
+    background: #395B64;
+    background: #A5C9CA;
+    background: #E7F6F2;
+}
 body{
-    background-color: darkolivegreen;
+    background-image:url(../images/fondo-perros-1.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.colorSobreFondo {
+    color: #E7F6F2;
+    font-size: 1.4rem;
+    background-color: black;
+    background-size: cover;
+    display: inline;  
 }
 
+.form  {
+    display: flex;    
+    align-items: center;
+    gap: 10px;
+ }
 .navegador{
     width: 100%;
     margin: 30px 0;
     text-align: center;
+}
+
+.navegador h2{
+    color: #E7F6F2;
+    background-color: #395B64;
 }
 .containerTable{
     width: 100%;
@@ -16,12 +42,13 @@ body{
 
 
 .table {
-    background-color: aquamarine;
+    background-color: #A5C9CA;
     width: 80%;
 }
+
 .thead {
-    background-color: gray;
-    width: 100%;    
+    background-color: #E7F6F2;
+    width: 100%;
 }
 
 .tr{

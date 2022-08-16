@@ -40,16 +40,14 @@ function newRow (newPerro){
 };
 
 function listadoUpdate() {
-    tabla.innerHTML = "";  
-    
-        setBusquedaPerros = JSON.parse(localStorage.getItem("setBusquedaPerros"));
-        let selectorTamanos = localStorage.getItem("setSelectorTamanos");
-        tamaños.value = selectorTamanos
-        console.log(setBusquedaPerros)
-        setBusquedaPerros.forEach((item) => {
+    tabla.innerHTML = "";      
+    setBusquedaPerros = JSON.parse(localStorage.getItem("setBusquedaPerros"));
+    let selectorTamanos = localStorage.getItem("setSelectorTamanos");
+    tamaños.value = selectorTamanos
+    console.log(setBusquedaPerros)
+    setBusquedaPerros.forEach((item) => {
             newRow(item);
-        });    
-        
+    });        
 };
 
 //desarrollar el filtro por tamaños !
@@ -75,5 +73,6 @@ buscar.addEventListener("click",(e)=>{
 });
 
 eliminar.onclick = () => {  
-    tabla.innerHTML= ""
+    tabla.innerHTML= "";
+    localStorage.clear();
 };

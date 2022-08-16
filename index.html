@@ -13,12 +13,17 @@
             <h2>Prototipo: BUSCADOR DE PERROS</h2>
         </div>
     </header>
+    
     <div>
-        <form id="">
-            <label for="">Perros para adoptar</label>
+        <form class="form" id="">
+            <label class="colorSobreFondo" for="">Perros para adoptar</label>
+
+            <div><button id="buscar">BUSCAR</button></div>
+
             
-            <button id="buscar">BUSCAR</button>
-            <h4>Por tamaños:
+            
+            
+            <h4 class="colorSobreFondo">Por tamaños:
                 <select name="" id="selectTamanos">
                     <option value="todos">Todos</option>
                     <option value="grande">Grande</option>
@@ -27,6 +32,7 @@
                 </select>
             </h4>
             
+            <button id="eliminar">Vaciar</button>
         </form>
     </div>
     <div class="containerTable">
@@ -43,9 +49,10 @@
 
             </tbody>
         </table>
-        <div><button id="eliminar">Vaciar</button></div>
+        
         
     </div>
+    
 
     <script src="classAdopcion.js"></script>
     <script src="basePerros.js"></script>
