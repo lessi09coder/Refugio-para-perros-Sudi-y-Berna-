@@ -5,7 +5,7 @@ perros.push(new Adopcion ('Pluto', 'bulldog', 'pequeño', 'gris','macho',true , 
 perros.push(new Adopcion ('Nala', 'gran danes', 'mediano', 'negro-blanco','hembra',true, false));
 perros.push(new Adopcion ('Cachito', 'cruza', 'pequeño', 'marron','macho',false, false));
 
-console.log(perros)
+//console.log(perros)
 
 
 //busquedaPerros va a ser un filtro para elegir que perros buscamos
@@ -44,7 +44,7 @@ function listadoUpdate() {
     setBusquedaPerros = JSON.parse(localStorage.getItem("setBusquedaPerros"));
     let selectorTamanos = localStorage.getItem("setSelectorTamanos");
     tamaños.value = selectorTamanos
-    console.log(setBusquedaPerros)
+    //console.log(setBusquedaPerros)
     setBusquedaPerros.forEach((item) => {
             newRow(item);
     });        
@@ -54,10 +54,10 @@ function listadoUpdate() {
 function seleccionDeTamanos(){
     tamañosElegido = tamaños.value;
     localStorage.setItem("setSelectorTamanos",tamañosElegido)
-    console.log(tamañosElegido);
+    //console.log(tamañosElegido);
        
     if (tamañosElegido != "todos"){busquedaPerros = perros.filter(Adopcion => Adopcion.tamaño == tamañosElegido )} else{busquedaPerros= perros.slice()} //desafio complementario
-    console.log(busquedaPerros) ;
+    //console.log(busquedaPerros) ;
     
 }
 
@@ -67,9 +67,10 @@ if(localStorage.getItem("setBusquedaPerros")!=null){
 
 buscar.addEventListener("click",(e)=>{
     e.preventDefault();
-    seleccionDeTamanos();
+    seleccionDeTamanos();    
     localStorage.setItem("setBusquedaPerros",JSON.stringify(busquedaPerros))
     listadoUpdate();
+    listaPerros();
 });
 
 eliminar.onclick = () => {  
@@ -78,11 +79,13 @@ eliminar.onclick = () => {
 };
 
 //desafio complementario, para obtener los nombres de los perros encontrados y luego armar una lista
-let nombres = []
-listaPerros()
+
+
 function listaPerros (){
-    setBusquedaPerros.forEach(a => {
+    let nombres = []
+    setBusquedaPerros.forEach(a => {        
         nombres.push(a.nombre)          
-    })      
+    })  
+    console.log(...nombres) // asi tenemos la lista de los perros encontrados    
 }
-console.log(...nombres) // asi tenemos la lista de los perros encontrados
+
