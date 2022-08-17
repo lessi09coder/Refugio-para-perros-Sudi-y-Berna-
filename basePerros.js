@@ -11,7 +11,7 @@ console.log(perros)
 //busquedaPerros va a ser un filtro para elegir que perros buscamos
 let busquedaPerros;
 
-const tabla = document.getElementById("perros");
+const tabla = document.getElementById("perrosTBody");
 const buscar = document.querySelector("#buscar");
 const eliminar = document.querySelector("#eliminar");
 let tamaños = document.getElementById("selectTamanos");
@@ -56,7 +56,7 @@ function seleccionDeTamanos(){
     localStorage.setItem("setSelectorTamanos",tamañosElegido)
     console.log(tamañosElegido);
        
-    if (tamañosElegido != "todos"){busquedaPerros = perros.filter(Adopcion => Adopcion.tamaño == tamañosElegido )} else{busquedaPerros= perros.slice()}
+    if (tamañosElegido != "todos"){busquedaPerros = perros.filter(Adopcion => Adopcion.tamaño == tamañosElegido )} else{busquedaPerros= perros.slice()} //desafio complementario
     console.log(busquedaPerros) ;
     
 }
@@ -76,3 +76,13 @@ eliminar.onclick = () => {
     tabla.innerHTML= "";
     localStorage.clear();
 };
+
+//desafio complementario, para obtener los nombres de los perros encontrados y luego armar una lista
+let nombres = []
+listaPerros()
+function listaPerros (){
+    setBusquedaPerros.forEach(a => {
+        nombres.push(a.nombre)          
+    })      
+}
+console.log(...nombres) // asi tenemos la lista de los perros encontrados
