@@ -61,6 +61,14 @@ function seleccionDeTamanos(){
     
 }
 
+function listaPerros (){
+    let nombres = []
+    setBusquedaPerros.forEach(a => {        
+        nombres.push(a.nombre)          
+    })  
+    console.log(...nombres) // asi tenemos la lista de los perros encontrados    
+}
+
 if(localStorage.getItem("setBusquedaPerros")!=null){
     listadoUpdate();
 }
@@ -81,11 +89,4 @@ eliminar.onclick = () => {
 //desafio complementario, para obtener los nombres de los perros encontrados y luego armar una lista
 
 
-function listaPerros (){
-    let nombres = []
-    setBusquedaPerros.forEach(a => {        
-        nombres.push(a.nombre)          
-    })  
-    console.log(...nombres) // asi tenemos la lista de los perros encontrados    
-}
 
