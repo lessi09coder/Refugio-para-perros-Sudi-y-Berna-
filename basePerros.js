@@ -18,6 +18,7 @@ let tamaños = document.getElementById("selectTamanos");
 let setBusquedaPerros
 
 
+
 function newRow (newPerro){
     const row = document.createElement("tr");    
     let aux= document.createElement("th");
@@ -75,6 +76,7 @@ if(localStorage.getItem("setBusquedaPerros")!=null){
 
 buscar.addEventListener("click",(e)=>{
     e.preventDefault();
+    animejsRotate();
     seleccionDeTamanos();    
     localStorage.setItem("setBusquedaPerros",JSON.stringify(busquedaPerros))
     listadoUpdate();
@@ -83,6 +85,7 @@ buscar.addEventListener("click",(e)=>{
 
 eliminar.onclick = () => {  
     tabla.innerHTML= "";
+    animejsVaciar();
     localStorage.clear();
 };
 
@@ -90,3 +93,23 @@ eliminar.onclick = () => {
 
 
 
+//****      animejs     ****
+//libreria de animaciones 
+const animejsRotate = () =>{
+    anime({
+        targets: buscar,
+        rotate: 360,
+        duration: 3000,          
+    });
+    }
+//buscar.addEventListener('click', animejsRotate)
+
+const animejsVaciar = () => {
+    anime({
+        targets: eliminar,
+        scale:5,
+        rotate: 90,
+        translateX:100,
+        duration: 1500,        
+    })
+}
