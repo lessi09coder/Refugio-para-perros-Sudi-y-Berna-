@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscador de Perros</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -18,7 +21,18 @@
         <form class="form" id="">
             <label class="colorSobreFondo" for="">Perros para adoptar</label>
 
-                      
+            <h4 class="colorSobreFondo">Por color:
+                <select  name="" id="selectColor">
+                    <option value="todos">Todos</option>
+                    <option value="negro">Negro</option>
+                    <option value="gris">Gris</option>
+                    <option value="marron">Marron</option>
+                    <option value="blanco">Blanco</option>
+                    <option value="dorado">Dorado</option>
+                    <option value="atigrado">Atigrado</option>
+
+                </select>
+            </h4>        
             
             <h4 class="colorSobreFondo">Por tamaños:
                 <select name="" id="selectTamanos">
@@ -28,9 +42,9 @@
                     <option value="pequeño">Pequeño</option>
                 </select>
             </h4>
-            <div><button id="buscar">BUSCAR</button></div>
+            <div><button class="button" id="buscar">BUSCAR</button></div>
             
-            <button id="eliminar">Vaciar</button>
+            <button class="button" id="eliminar">Vaciar</button>
         </form>
     </div>
     <div class="containerTable">
@@ -40,7 +54,8 @@
                     <th>Nombre</th>
                     <th>Raza</th>
                     <th>Tamaño</th>
-                    <th>Color</th>                   
+                    <th>Color</th>  
+                    <th>Sexo</th>                 
                 </tr>
             </thead>
             <tbody id="perrosTBody" class="tbody">

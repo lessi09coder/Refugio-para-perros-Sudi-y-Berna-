@@ -4,12 +4,38 @@
     background: #A5C9CA;
     background: #E7F6F2;
 }
+
+
+
 body{
     background-image:url(../images/fondo-perros-1.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    font-family: 'GFS Didot', serif;
+
 }
+
+.button {
+    background-color: rgb(17, 110, 147); 
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+select {
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    height: 30px;
+    padding: 5px;
+    width: 100px;
+}
+
 .colorSobreFondo {
     color: #E7F6F2;
     font-size: 1.4rem;
