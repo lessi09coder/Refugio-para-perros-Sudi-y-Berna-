@@ -1,9 +1,9 @@
 const perros = []
 perros.push(new Adopcion ('Sudan', 'labrador', 'grande', 'dorado','macho',false, false));
 perros.push(new Adopcion ('Berna', 'pitbull', 'mediano', 'atigrado','hembra',false ,false));
-perros.push(new Adopcion ('Pluto', 'bulldog', 'pequeño', 'gris','macho',true , false));
+perros.push(new Adopcion ('Pluto', 'yorkshire terrier', 'pequeño', 'gris','macho',true , false));
 perros.push(new Adopcion ('Nala', 'gran danes', 'mediano','blanco','hembra',true, false));
-perros.push(new Adopcion ('Cachito', 'cruza', 'pequeño', 'marron','macho',false, false));
+perros.push(new Adopcion ('Cachito', 'boder terrier', 'pequeño', 'marron','macho',false, false));
 perros.push(new Adopcion ('Simon', 'salchicha', 'pequeño', 'negro','macho',false, true));
 perros.push(new Adopcion ('Sabandija', 'cruza', 'pequeño', 'blanco','macho',false, false));
 perros.push(new Adopcion ('Batuke', 'labrador', 'grande', 'dorado','macho',false, false));
@@ -59,7 +59,7 @@ function listadoUpdate() {
     let b = localStorage.getItem("setSelectorColor");
     tamaños.value = a;
     color.value = b;
-    console.log(setB);
+    //console.log(setB);
     setB.forEach((item) => {
             newRow(item);
     });        
@@ -81,13 +81,6 @@ function seleccionDeBusqueda(){
 
 }
 
-/* function seleccionDeColor(){
-    let colorElegido = color.value;
-    localStorage.setItem("setSelectorColor",colorElegido)
-           
-    if (colorElegido != "todos"){busquedaPerros = perros.filter(Adopcion => Adopcion.color == colorElegido )} else{busquedaPerros= perros.slice()} 
-    
-} */
 
  function listaPerros (){
     let nombres = []
@@ -147,12 +140,41 @@ const animejsVaciar = () => {
     })
 }
 
+anime({
+    targets: '.subiBaja',
+    keyframes: [
+      {translateY: -20},
+      {translateY: 20},
+      //{translateY: 20},
+      //{translateX: 0},
+      
+    ],
+    duration: 5000,
+    easing: 'easeOutElastic(1.2, .3)',
+    loop: true
+  });
 
 
-const urlAPI = "" //metes la url de la API
-fetch (urlAPI)
-.then(response => response.json())
-.then(data => {
-    console.log(data)
-})
-.catch (err => console.log(err))
+
+
+
+//API DOG "https://dog.ceo/dog-api/"
+
+let imgprueba='';
+const urlAPIDog = "https://dog.ceo/api/breeds/image/random" //metes la url de la API
+fetch (urlAPIDog)
+    .then(response => response.json())
+    .then(data => imagePerro(data))
+    .catch (err => console.log(err));
+
+    let imagePerro = (data) => {
+    
+    imgprueba = `<img src="${data.message}" alt="">`; //Con fetch ponemos una imagen random de una galeria de perros
+    console.log(imgprueba)
+    document.querySelector('#imggg').innerHTML = imgprueba; 
+    }
+
+
+
+
+    
