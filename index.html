@@ -13,14 +13,14 @@
 <body>
     <header>
         <div class="navegador">
-            <h2>Prototipo: BUSCADOR DE PERROS</h2>
+            <h2>BUSCADOR DE PERROS EN ADOPCION</h2>
         </div>
     </header>
     
     <div>
+        <h2 class="titulo1">Perros para adoptar:</h2>
         <form class="form" id="">
-            <label class="colorSobreFondo" for="">Perros para adoptar</label>
-
+            
             <h4 class="colorSobreFondo">Por color:
                 <select  name="" id="selectColor">
                     <option value="todos">Todos</option>
@@ -41,7 +41,14 @@
                     <option value="mediano">Mediano</option>
                     <option value="pequeño">Pequeño</option>
                 </select>
+
+
+                
             </h4>
+            <h4 class="colorSobreFondo">Por raza: <select name="" id="selRAZA">
+                <option value="todos">Todos</option>
+            </select></h4>
+            
             <div><button class="button" id="buscar">BUSCAR</button></div>
             
             <button class="button" id="eliminar">Vaciar</button>
@@ -69,7 +76,7 @@
     </div>
     
     <div class="imgPerroAbandonado ">
-        <h2>UN PERRO ABANDONADO BUSCA HOGAR</h2>
+        <h2> UN PERRO ABANDONADO BUSCA UN HOGAR </h2>
         <ul class="subiBaja" id="imggg"></ul>
     </div>
     
@@ -77,7 +84,11 @@
     <script src="classAdopcion.js"></script>
     <script src="basePerros.js"></script>
     
-    
+    <footer>
+        <div>
+            <h2 class="footer">Por Alexis Bonetti</h2>
+        </div>
+    </footer>
 
 </body>
 </html>
