@@ -24,13 +24,22 @@ anime({
     targets: '.subiBaja',
     keyframes: [
       {translateY: -20},
-      {translateY: 20},
-      //{translateY: 20},
-      //{translateX: 0},
-      
+      {translateY: 20},           
     ],
     duration: 5000,
     easing: 'easeOutElastic(1.2, .3)',
     loop: true
 });
 
+
+//animacion de tabla
+let animaciontabla=() => { anime({ 
+    targets: ".dropTabla",    
+    keyframes: [
+        {translateY:10},
+        {translateY:0},        
+    ],    
+    delay: anime.stagger(100),
+    loop: false,
+})
+}

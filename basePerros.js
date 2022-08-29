@@ -16,7 +16,10 @@ let setB ; // para la tabla y para la lista de nombres de perros encontrados
 
 //***      CREAR TABLA     ****
 function newRow (newPerro){
-    const row = document.createElement("tr");    
+    const row = document.createElement("tr");
+    // podemos poner un animacion por cada fila de perro encontrado
+    row.classList.add("dropTabla");
+    
     let aux= document.createElement("th");
     aux.innerText = newPerro.nombre;
     row.append(aux)
@@ -38,6 +41,8 @@ function newRow (newPerro){
     row.append(aux)
     
     tabla.append(row)
+
+    animaciontabla();
 };
 
 //PROBANDO HACER UN SELECT CON DOM
@@ -70,9 +75,12 @@ function listadoUpdate() {
     color.value = b;
     selRAZA.value = c;
     console.log(setB);
-    setB.forEach((item) => {
-            newRow(item);
-    });        
+    setB.forEach((item) => {        
+        newRow(item);
+        //animaciontabla();        
+    }); 
+
+            
 };
 
 function seleccionDeBusqueda(){
@@ -115,6 +123,9 @@ if(localStorage.getItem("setBusquedaPerros") != null){
 }; 
 
 buscar.addEventListener("click",(e)=>{
+    /* setTimeout(()=> {
+        animaciontabla();
+    }, 4000) */ // se coloco un setTimeout para que luego de filtrar los elementos, se aplique la animacion
     e.preventDefault();
     //newSelectRaza(); ESTA SE BORRA ENTONCES
     animejsRotate();
@@ -131,3 +142,6 @@ eliminar.onclick = () => {
     animejsVaciar();
     localStorage.clear();
 };
+
+
+
