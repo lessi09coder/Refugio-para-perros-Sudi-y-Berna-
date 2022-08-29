@@ -36,7 +36,7 @@ select {
     font-size: 16px;
     height: 35px;
     padding: 0px;
-    width: 100px;
+    width: 135px;
 }
 .titulo1{
     font-size: 2rem;
@@ -50,6 +50,7 @@ select {
     background-color: #A5C9CA;
     background-size: cover;
     display: inline;  
+    border-radius: 0  10px 10px 0;
 }
 
 .form  {

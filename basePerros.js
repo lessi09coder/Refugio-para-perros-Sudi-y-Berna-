@@ -1,22 +1,7 @@
-const perros = []
-perros.push(new Adopcion ('Sudan', 'labrador', 'grande', 'dorado','macho',false, false));
-perros.push(new Adopcion ('Berna', 'pitbull', 'mediano', 'atigrado','hembra',false ,false));
-perros.push(new Adopcion ('Pluto', 'yorkshire terrier', 'pequeño', 'gris','macho',true , false));
-perros.push(new Adopcion ('Nala', 'gran danes', 'mediano','blanco','hembra',true, false));
-perros.push(new Adopcion ('Cachito', 'boder terrier', 'pequeño', 'marron','macho',false, false));
-perros.push(new Adopcion ('Simon', 'salchicha', 'pequeño', 'negro','macho',false, true));
-perros.push(new Adopcion ('Sabandija', 'cruza', 'pequeño', 'blanco','macho',false, false));
-perros.push(new Adopcion ('Batuke', 'labrador', 'grande', 'dorado','macho',false, false));
-perros.push(new Adopcion ('Negro', 'border collie', 'mediano', 'negro blanco','macho',false, false));
-perros.push(new Adopcion ('Violeta', 'galgo', 'mediano', 'gris','hembra',false, false));
-perros.push(new Adopcion ('Billy', 'fox terrier', 'pequeño', 'gris','macho',false, false));
-perros.push(new Adopcion ('Couti', 'doberman', 'grande', 'negro','macho',false, false));
-perros.push(new Adopcion ('Pepo', 'galgo', 'grande', 'gris','macho',false, false));
-perros.push(new Adopcion ('Yago', 'labrador', 'grande', 'marron','macho',false, false));
-//console.log(perros)
+
+//FALTA PONER ASINCRONISMO
 
 
-//busquedaPerros va a ser un filtro para elegir que perros buscamos
 let busquedaPerros;
 let busquedaprueba = [];
 let busquedaRaza = [];
@@ -29,6 +14,7 @@ let selRAZA = document.getElementById("selRAZA");
 let setBusquedaPerros;
 let setB ; // para la tabla y para la lista de nombres de perros encontrados
 
+//***      CREAR TABLA     ****
 function newRow (newPerro){
     const row = document.createElement("tr");    
     let aux= document.createElement("th");
@@ -55,30 +41,22 @@ function newRow (newPerro){
 };
 
 //PROBANDO HACER UN SELECT CON DOM
-const razaPerros=[];
-perros.forEach(a => {
-    razaPerros.push(a.raza)
-})
-let filtroRaza  = razaPerros.filter(function (ele,pos){
+
+function buscarRaza(){
+    const razaPerros=[];
+    perros.forEach(a => {razaPerros.push(a.raza)})
+    let filtroRaza  = razaPerros.filter(function (ele,pos){        
     return razaPerros.indexOf(ele) == pos;
-})
-console.log(filtroRaza) 
-filtroRaza.forEach((item) => {
-    newSelectRaza(item);    
-});     
-
-function newSelectRaza (e){           
-        
-    if(e != undefined){
-        let optionRaza = document.createElement("option");
-        optionRaza.innerText = e
-        
-        //optionRaza.setAttribute("value","value1"); // poner e.raza?
-        //let optionRazaTEXT = document.createTextNode("razas ?");
-        //optionRaza.appendChild(optionRazaTEXT)
-
-        selRAZA.appendChild(optionRaza)        
-    }       
+    })
+    //console.log(filtroRaza) 
+    filtroRaza.forEach((e) => {
+        if(e != undefined){
+            let optionRaza = document.createElement("option");
+            optionRaza.innerText = e;           
+            selRAZA.appendChild(optionRaza);
+        }
+        }
+    );    
 };
 
 
@@ -91,13 +69,16 @@ function listadoUpdate() {
     tamaños.value = a;
     color.value = b;
     selRAZA.value = c;
-    //console.log(setB);
+    console.log(setB);
     setB.forEach((item) => {
             newRow(item);
     });        
 };
 
 function seleccionDeBusqueda(){
+    
+    buscarRaza()
+
     let tamañosElegido = tamaños.value;
     localStorage.setItem("setSelectorTamanos",tamañosElegido)
        
@@ -109,14 +90,13 @@ function seleccionDeBusqueda(){
     localStorage.setItem("setSelectorColor",colorElegido)
            
     if (colorElegido != "todos"){busquedaprueba = busquedaPerros.filter(e => e.color == colorElegido )} else{busquedaprueba = busquedaPerros.slice()} 
-    console.log(busquedaprueba)
+    //console.log(busquedaprueba)
      
-    //a ver si sale raza
     let razaElegido = selRAZA.value
-    console.log(razaElegido)
+    //console.log(razaElegido)
     localStorage.setItem("setSelectorRaza",razaElegido)
     if (razaElegido != "todos"){busquedaRaza = busquedaprueba.filter(e => e.raza == razaElegido )} else{busquedaRaza = busquedaprueba.slice()} 
-    console.log(busquedaRaza)
+    //console.log(busquedaRaza)
 
 };
 
@@ -126,25 +106,24 @@ function listaPerros (){
     setB.forEach(a => {        
         nombres.push(a.nombre)          
     })   
-    console.log(...nombres) // asi tenemos la lista de los perros encontrados    
+    console.log("Los perros disponibles son:", ...nombres) // asi tenemos la lista de los perros encontrados    
 };
 
+//cuando esta el local storage vacio y se actualiza la pagina:
 if(localStorage.getItem("setBusquedaPerros") != null){
     listadoUpdate();
-};
+}; 
 
 buscar.addEventListener("click",(e)=>{
     e.preventDefault();
-    newSelectRaza(); 
+    //newSelectRaza(); ESTA SE BORRA ENTONCES
     animejsRotate();
     seleccionDeBusqueda();
     localStorage.setItem("setBusquedaPerros",JSON.stringify(busquedaRaza));
-    console.log(localStorage.getItem("setBusquedaPerros"));  
-        
-    listadoUpdate();
-    listaPerros(); 
-    //desafio complementario, para obtener los nombres de los perros encontrados y luego armar una lista
-
+    //console.log(localStorage.getItem("setBusquedaPerros"));    
+    listadoUpdate()
+    
+    listaPerros();     
 });
 
 eliminar.onclick = () => {  
@@ -152,58 +131,3 @@ eliminar.onclick = () => {
     animejsVaciar();
     localStorage.clear();
 };
-
-
-//****        animejs        ****
-//libreria de animaciones 
-const animejsRotate = () =>{
-    anime({
-        targets: buscar,
-        rotate: 360,
-        duration: 3000,          
-    })
-};
-//buscar.addEventListener('click', animejsRotate)
-
-const animejsVaciar = () => {
-    anime({
-        targets: eliminar,
-        scale:5,
-        rotate: 90,
-        translateX:100,
-        duration: 1500,        
-    })
-};
-
-anime({
-    targets: '.subiBaja',
-    keyframes: [
-      {translateY: -20},
-      {translateY: 20},
-      //{translateY: 20},
-      //{translateX: 0},
-      
-    ],
-    duration: 5000,
-    easing: 'easeOutElastic(1.2, .3)',
-    loop: true
-});
-
-
-
-
-
-//API DOG "https://dog.ceo/dog-api/"
-
-//let imgprueba='';
-const urlAPIDog = "https://dog.ceo/api/breeds/image/random" //metes la url de la API
-fetch (urlAPIDog)
-    .then(response => response.json())
-    .then(data => imagePerro(data))
-    .catch (err => console.log(err));
-    
-    let imagePerro = (data) => {    
-        let imgprueba = `<img src="${data.message}" alt="">`; //Con fetch ponemos una imagen random de una galeria de perros
-        console.log(imgprueba)
-        document.querySelector('#imggg').innerHTML = imgprueba; 
-    };
