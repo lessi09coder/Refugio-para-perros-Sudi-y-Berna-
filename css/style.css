@@ -8,7 +8,7 @@
 
 
 body{
-    background-image:url(../images/pexels-lumn-406014.jpg);
+    background-image:url(../images/fondo-perros-2-compr.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -144,3 +144,39 @@ select {
     background-color: #A5C9CA;
     color: black;
 }
+
+.swal-button {
+    padding: 7px 19px;
+    border-radius: 2px;
+    background-color: #395B64;
+    font-size: 12px;
+    border: 1px solid #A5C9CA;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+.swal-title {
+    margin: 15px;
+    font-size: 2rem;
+    color: #E7F6F2;
+    background-color: #395b6464;    
+    margin-bottom: 15px;
+  }
+.swal-text {
+    background-color:#395B64;
+    padding: 10px;
+    border: 1px solid #F0E1A1;
+    display: block;
+    margin: 50px;
+    text-align: center;
+    color: white;
+  }
+.swal-overlay {
+    background-color: #395b649c;
+    margin: 10PX;
+}
+.swal-modal {
+    background: url(../images/perro-ALERT.png);
+    background-position: center;
+    background-size: cover;
+    border: 3px solid white;
+  }

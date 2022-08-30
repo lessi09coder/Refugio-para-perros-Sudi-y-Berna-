@@ -38,15 +38,16 @@ function newRow (newPerro){
 
     aux= document.createElement("th");
     aux.innerText = newPerro.sexo;
-    row.append(aux)
+    row.append(aux);
     
-    tabla.append(row)
+    tabla.append(row);
 
     animaciontabla();
 };
 
 //PROBANDO HACER UN SELECT CON DOM
 
+buscarRaza(); // se ejecuta cada vez para que aparesca en el select la opcion de razas cuando se inicia por primera vez a la web
 function buscarRaza(){
     const razaPerros=[];
     perros.forEach(a => {razaPerros.push(a.raza)})
@@ -75,12 +76,12 @@ function listadoUpdate() {
     color.value = b;
     selRAZA.value = c;
     console.log(setB);
+    
     setB.forEach((item) => {        
         newRow(item);
+        console.log(item)
         //animaciontabla();        
-    }); 
-
-            
+    });            
 };
 
 function seleccionDeBusqueda(){
@@ -123,11 +124,9 @@ if(localStorage.getItem("setBusquedaPerros") != null){
 }; 
 
 buscar.addEventListener("click",(e)=>{
-    /* setTimeout(()=> {
-        animaciontabla();
-    }, 4000) */ // se coloco un setTimeout para que luego de filtrar los elementos, se aplique la animacion
+    
     e.preventDefault();
-    //newSelectRaza(); ESTA SE BORRA ENTONCES
+   
     animejsRotate();
     seleccionDeBusqueda();
     localStorage.setItem("setBusquedaPerros",JSON.stringify(busquedaRaza));
@@ -143,5 +142,22 @@ eliminar.onclick = () => {
     localStorage.clear();
 };
 
-
-
+//ponemos un pop para provomer una adopcion en particular
+setTimeout(() => {
+    swal({
+        title: "Un perro quiere ser adoptado!",
+        text: "Encontramos un perro que puede ser tuyo !",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("GRACIAS, NOS PONDREMOS EN CONTACTO!", {
+            icon: "success",
+          });
+        } else {
+          swal("Un perrito se siente triste :(");
+        }
+      });
+}, 1000);

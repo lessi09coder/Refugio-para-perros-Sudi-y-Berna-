@@ -33,7 +33,7 @@ anime({
 
 
 //animacion de tabla
-let animaciontabla=() => { anime({ 
+const animaciontabla=() => { anime({ 
     targets: ".dropTabla",    
     keyframes: [
         {translateY:10},
