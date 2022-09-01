@@ -146,18 +146,20 @@ eliminar.onclick = () => {
 setTimeout(() => {
     swal({
         title: "Un perro quiere ser adoptado!",
-        text: "Encontramos un perro que puede ser tuyo !",
-        icon: "warning",
+        text: "Encontramos un perro que puede ser tuyo !",        
         buttons: true,
         dangerMode: true,
       })
       .then((willDelete) => {
         if (willDelete) {
           swal("GRACIAS, NOS PONDREMOS EN CONTACTO!", {
-            icon: "success",
+            
           });
         } else {
           swal("Un perrito se siente triste :(");
         }
       });
-}, 1000);
+}, 3000);
+
+
+
