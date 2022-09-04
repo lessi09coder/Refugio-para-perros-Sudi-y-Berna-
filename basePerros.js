@@ -15,6 +15,11 @@ let selRAZA = document.getElementById("selectRAZA");
 let setBusquedaPerros;
 let setB ; // para la tabla y para la lista de nombres de perros encontrados
 
+
+
+
+//FUNCIONES
+
 //***      CREAR TABLA     ****
 function newRow (newPerro){
     const row = document.createElement("tr");
@@ -47,42 +52,37 @@ function newRow (newPerro){
 };
 
 
-
+//FILTRO POR RAZAS
 buscarRaza(); // se ejecuta cada vez para que aparesca en el select la opcion de razas cuando se inicia por primera vez a la web
 function buscarRaza(){
     const razaPerros=[];
     perros.forEach(a => {razaPerros.push(a.raza)})
-    let filtroRaza  = razaPerros.filter(function (ele,pos){        
+
+    let filtroRaza = [];
+    filtroRaza  = razaPerros.filter(function (ele,pos){        
     return razaPerros.indexOf(ele) == pos;
     })
-    //console.log(filtroRaza) 
+    console.log(filtroRaza) 
     filtroRaza.forEach((e) => {
-        if(e != undefined){
-            let optionRaza = document.createElement("option");
-            optionRaza.innerText = e;           
-            selRAZA.appendChild(optionRaza);
-        }
+            if(e != undefined){
+                let optionRaza = document.createElement("option");
+                optionRaza.innerText = e;           
+                selRAZA.appendChild(optionRaza);
+            }        
         }
     );    
 };
 
-
+//ACTUALIZACION DE PERROS ENCONTRADOS
 function listadoUpdate() {
     tabla.innerHTML = "";      
     setB = JSON.parse(localStorage.getItem("setBusquedaPerros"));
    
-    /* let a = localStorage.getItem("setSelectorTamanos");
-    let b = localStorage.getItem("setSelectorColor");
-    let c = localStorage.getItem("setSelectorRaza")
-    tamaños.value = a;
-    color.value = b;
-    selRAZA.value = c; */
-
+    //Para que queden guardados los select que elegimos
     selTamaño.value = localStorage.getItem("setSelectorTamanos");
     selColor.value = localStorage.getItem("setSelectorColor");
-    selRAZA.value = localStorage.getItem("setSelectorRaza")
-    
-           
+    selRAZA.value = localStorage.getItem("setSelectorRaza") 
+               
     setB.forEach((item) => {        
         newRow(item)            
     });            
@@ -90,7 +90,7 @@ function listadoUpdate() {
 
 function seleccionDeBusqueda(){
     
-    buscarRaza()
+    //buscarRaza()
 
     let tamañosElegido = selTamaño.value;
     localStorage.setItem("setSelectorTamanos",tamañosElegido)
@@ -113,30 +113,32 @@ function seleccionDeBusqueda(){
 
 };
 
-
+//LISTAR PERROS ENCONTRADOS
 function listaPerros (){
-    let nombres = []
+    let nombresPerrosLista = []
     setB.forEach(a => {        
-        nombres.push(a.nombre)          
+        nombresPerrosLista.push(a.nombre)          
     })   
-    console.log("Los perros disponibles son:", ...nombres) // asi tenemos la lista de los perros encontrados    
+   // console.log("Los perros disponibles son:",...nombresPerrosLista) // asi tenemos la lista de los perros encontrados 
+    console.log(`Los perros disponibles son: ${nombresPerrosLista},`);
 };
+
+//SETEAR EN LOCAL STORAGE LOS PERROS ENCONTRADOS COMO UN STRINGIFY
+function setearPerrosLoStg(){
+    localStorage.setItem("setBusquedaPerros",JSON.stringify(busquedaRaza));
+}
 
 //cuando esta el local storage vacio y se actualiza la pagina:
 if(localStorage.getItem("setBusquedaPerros") != null){
     listadoUpdate();
 }; 
 
-buscar.addEventListener("click",(e)=>{
-    
-    e.preventDefault();
-   
+buscar.addEventListener("click",(e)=>{    
+    e.preventDefault();   
     animejsRotate();
     seleccionDeBusqueda();
-    localStorage.setItem("setBusquedaPerros",JSON.stringify(busquedaRaza));
-    //console.log(localStorage.getItem("setBusquedaPerros"));    
-    listadoUpdate()
-    
+    setearPerrosLoStg();     
+    listadoUpdate()    
     listaPerros();     
 });
 
@@ -146,8 +148,8 @@ eliminar.onclick = () => {
     localStorage.clear();
 };
 
-//ponemos un pop para provomer una adopcion en particular
-setTimeout(() => {
+//ponemos un pop-up para provomer una adopcion en particular
+/* setTimeout(() => {
     swal({
         title: "Un perro quiere ser adoptado!",
         text: "Encontramos un perro que puede ser tuyo !",        
@@ -163,7 +165,4 @@ setTimeout(() => {
           swal("Un perrito se siente triste :(");
         }
       });
-}, 1000);
-
-
-
+}, 1000); */
