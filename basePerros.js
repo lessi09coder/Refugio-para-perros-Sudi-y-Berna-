@@ -1,6 +1,4 @@
-
-//FALTA PONER ASINCRONISMO
-
+//Variables Principales
 
 let busquedaPerros;
 let busquedaprueba = [];
@@ -8,9 +6,12 @@ let busquedaRaza = [];
 const tabla = document.getElementById("perrosTBody");
 const buscar = document.querySelector("#buscar");
 const eliminar = document.querySelector("#eliminar");
-let color = document.getElementById("selectColor")
-let tamaños = document.getElementById("selectTamanos");
-let selRAZA = document.getElementById("selRAZA");
+
+//variables para los botones de select (Buscar perros por sus caracteristicas)
+let selColor = document.getElementById("selectColor")
+let selTamaño = document.getElementById("selectTamanos");
+let selRAZA = document.getElementById("selectRAZA");
+
 let setBusquedaPerros;
 let setB ; // para la tabla y para la lista de nombres de perros encontrados
 
@@ -45,7 +46,7 @@ function newRow (newPerro){
     animaciontabla();
 };
 
-//PROBANDO HACER UN SELECT CON DOM
+
 
 buscarRaza(); // se ejecuta cada vez para que aparesca en el select la opcion de razas cuando se inicia por primera vez a la web
 function buscarRaza(){
@@ -69,18 +70,21 @@ function buscarRaza(){
 function listadoUpdate() {
     tabla.innerHTML = "";      
     setB = JSON.parse(localStorage.getItem("setBusquedaPerros"));
-    let a = localStorage.getItem("setSelectorTamanos");
+   
+    /* let a = localStorage.getItem("setSelectorTamanos");
     let b = localStorage.getItem("setSelectorColor");
     let c = localStorage.getItem("setSelectorRaza")
     tamaños.value = a;
     color.value = b;
-    selRAZA.value = c;
-    console.log(setB);
+    selRAZA.value = c; */
+
+    selTamaño.value = localStorage.getItem("setSelectorTamanos");
+    selColor.value = localStorage.getItem("setSelectorColor");
+    selRAZA.value = localStorage.getItem("setSelectorRaza")
     
+           
     setB.forEach((item) => {        
-        newRow(item);
-        console.log(item)
-        //animaciontabla();        
+        newRow(item)            
     });            
 };
 
@@ -88,14 +92,14 @@ function seleccionDeBusqueda(){
     
     buscarRaza()
 
-    let tamañosElegido = tamaños.value;
+    let tamañosElegido = selTamaño.value;
     localStorage.setItem("setSelectorTamanos",tamañosElegido)
        
     if (tamañosElegido != "todos"){busquedaPerros = perros.filter(e => e.tamaño == tamañosElegido )} 
     else{busquedaPerros= perros.slice()} 
     
 
-    let colorElegido = color.value;
+    let colorElegido = selColor.value;
     localStorage.setItem("setSelectorColor",colorElegido)
            
     if (colorElegido != "todos"){busquedaprueba = busquedaPerros.filter(e => e.color == colorElegido )} else{busquedaprueba = busquedaPerros.slice()} 
@@ -147,7 +151,7 @@ setTimeout(() => {
     swal({
         title: "Un perro quiere ser adoptado!",
         text: "Encontramos un perro que puede ser tuyo !",        
-        buttons: true,
+        buttons:["NO..." , true],
         dangerMode: true,
       })
       .then((willDelete) => {
@@ -159,7 +163,7 @@ setTimeout(() => {
           swal("Un perrito se siente triste :(");
         }
       });
-}, 3000);
+}, 1000);
 
 
 
