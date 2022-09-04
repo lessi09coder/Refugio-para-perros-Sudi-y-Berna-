@@ -90,6 +90,8 @@ function listadoUpdate() {
 
 function seleccionDeBusqueda(){
     
+    //buscarRaza()
+
     let tamañosElegido = selTamaño.value;
     localStorage.setItem("setSelectorTamanos",tamañosElegido)
        
