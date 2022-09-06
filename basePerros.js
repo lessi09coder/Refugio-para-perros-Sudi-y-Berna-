@@ -147,7 +147,7 @@ eliminar.onclick = () => {
 };
 
 //ponemos un pop-up para provomer una adopcion en particular
-/* setTimeout(() => {
+ setTimeout(() => {
     swal({
         title: "Un perro quiere ser adoptado!",
         text: "Encontramos un perro que puede ser tuyo !",        
@@ -163,4 +163,4 @@ eliminar.onclick = () => {
           swal("Un perrito se siente triste :(");
         }
       });
-}, 1000); */
+}, 1000); 

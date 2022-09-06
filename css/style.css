@@ -5,11 +5,11 @@
     background: #E7F6F2;
 }
 
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-  }
+}
   
 body{
     background-image:url(../images/fondo-perros-2-compr.jpg);
@@ -140,7 +140,6 @@ select {
     bottom: 0;
 }
 
-
 .dropTabla {
     background-color: #A5C9CA;
     color: black;
@@ -188,20 +187,8 @@ select {
 }
 
 
-/* ***Animaciones*** */
 
-@keyframes cascada {
-    from		{        
-        opacity: 0;       
-    }
-    0%,50%     {
-        opacity: 0.5;
-    }
-    50%,100%	{        
-        opacity: 1;
-    }
-}
-
+/* ***Media Query*** */
 
 @media screen and (max-width: 768px) {
 .form {    
@@ -255,4 +242,22 @@ select {
     width: 250px;
     height: 250px;
 }
+}
+
+
+
+
+
+/* ***Animaciones*** */
+
+@keyframes cascada {
+    from		{        
+        opacity: 0;       
+    }
+    0%,50%     {
+        opacity: 0.5;
+    }
+    50%,100%	{        
+        opacity: 1;
+    }
 }
