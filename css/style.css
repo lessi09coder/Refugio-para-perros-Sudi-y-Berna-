@@ -134,7 +134,7 @@ select {
 
 .footer{
     display: inline-block;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 4px;    
     position: fixed;
     bottom: 0;
