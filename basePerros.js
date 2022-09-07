@@ -126,7 +126,7 @@ function listaPerros (){
     let nombresPerrosLista = []
     setB.forEach(a => {        
         nombresPerrosLista.push(a.nombre)          
-    })   
+    });   
    // console.log("Los perros disponibles son:",...nombresPerrosLista) // asi tenemos la lista de los perros encontrados 
     console.log(`Los perros disponibles son: ${nombresPerrosLista},`);
 };
@@ -188,22 +188,6 @@ eliminar.onclick = () => {
 }, 3000);  
 
 
-
-
-
-
-
-
-
-/* idperro.onclick=(e)=>{
-    e.preventDefault();
-    console.log(idperro)
-    //let perroBoton = e.target.id ;   
-    //console.log(perroBoton);
-    modalPerro();  //ejecute una funcion la cual abra un modal con las caracteristicas del perro
-    
-}; */
-
 const urlJson = "Json/JSONperros.json";
 
 function modalPerro (e) {
@@ -221,17 +205,11 @@ function modalPerro (e) {
             button:true,
           })
         } )
+        
+        //el perro Pepa va a ser el .catch para demostrar que funciona bien.
         .catch(err=> {
             swal({
                 text: "No hay informacion del perro todavia "
                 })
-        })
-
-
-    
-    
-      
-        
+        })        
 };
-
-

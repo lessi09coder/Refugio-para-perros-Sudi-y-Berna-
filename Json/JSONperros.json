@@ -82,6 +82,9 @@
         "name":"Yago",
         "edad":"6",
         "personalidad":"soy un guardian de casa, me dormir en las afueras."
+    },
+    {
+        "name":"aca hiria Pepa, pero vamos a dejar a pepa para que funcione el catch error"
     }
 
 ]
