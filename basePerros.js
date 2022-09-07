@@ -15,6 +15,9 @@ let selRAZA = document.getElementById("selectRAZA");
 let setBusquedaPerros;
 let setB ; // para la tabla y para la lista de nombres de perros encontrados
 
+let idperro;
+
+//........
 
 
 
@@ -27,9 +30,16 @@ function newRow (newPerro){
     row.classList.add("dropTabla");
     
     let aux= document.createElement("th");
-    aux.innerText = newPerro.nombre;
-    row.append(aux)
+    let refperro= document.createElement("button")
+    refperro.setAttribute("id",`${newPerro.nombre}`); //podemos en vez de un href ponerle un ID y addevent...
     
+    
+    refperro.classList.add("link")
+    refperro.innerText = newPerro.nombre;
+    row.append(aux);
+    aux.append(refperro);
+
+
     aux= document.createElement("th");
     aux.innerText = newPerro.raza;
     row.append(aux)
@@ -81,7 +91,7 @@ function listadoUpdate() {
     //Para que queden guardados los select que elegimos
     selTamaño.value = localStorage.getItem("setSelectorTamanos");
     selColor.value = localStorage.getItem("setSelectorColor");
-    selRAZA.value = localStorage.getItem("setSelectorRaza") 
+    selRAZA.value = localStorage.getItem("setSelectorRaza");
                
     setB.forEach((item) => {        
         newRow(item)            
@@ -137,7 +147,19 @@ buscar.addEventListener("click",(e)=>{
     seleccionDeBusqueda();
     setearPerrosLoStg();     
     listadoUpdate()    
-    listaPerros();     
+    listaPerros();  
+    
+    idperro = document.querySelectorAll('.link')
+    console.log(idperro)
+    if(idperro!= undefined) {
+        idperro.forEach(optionPerro=> optionPerro.addEventListener("click",(e)=>{
+            e.preventDefault();            
+            let perroBoton = e.target.id ;   
+            console.log(perroBoton);
+            modalPerro(perroBoton);  //ejecute una funcion la cual abra un modal con las caracteristicas del perro
+        }))
+    
+    }
 });
 
 eliminar.onclick = () => {  
@@ -147,7 +169,7 @@ eliminar.onclick = () => {
 };
 
 //ponemos un pop-up para provomer una adopcion en particular
- setTimeout(() => {
+/*  setTimeout(() => {
     swal({
         title: "Un perro quiere ser adoptado!",
         text: "Encontramos un perro que puede ser tuyo !",        
@@ -163,4 +185,53 @@ eliminar.onclick = () => {
           swal("Un perrito se siente triste :(");
         }
       });
-}, 1000); 
+}, 3000);  */
+
+
+
+
+
+
+
+
+
+/* idperro.onclick=(e)=>{
+    e.preventDefault();
+    console.log(idperro)
+    //let perroBoton = e.target.id ;   
+    //console.log(perroBoton);
+    modalPerro();  //ejecute una funcion la cual abra un modal con las caracteristicas del perro
+    
+}; */
+
+const urlJson = "Json/JSONperros.json";
+
+function modalPerro (e) {
+    fetch(urlJson)
+        .then(response => response.json())
+        .then(data =>{
+            console.log(data);
+            let perrazo = data.filter(a => a.name == e )
+            
+            swal({
+            text: `Mi nombre es ${perrazo[0].name}, tengo ${perrazo[0].edad} años y ${perrazo[0].personalidad} `,        
+            button: {
+              text: "Search!",        
+            },
+            button:true,
+          })
+        } )
+        .catch(err=> {
+            swal({
+                text: "No hay informacion del perro todavia "
+                })
+        })
+
+
+    
+    
+      
+        
+};
+
+

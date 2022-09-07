@@ -1,0 +1,87 @@
+[
+    {
+        "id":1,
+        "name":"Berna",
+        "edad":"4",
+        "personalidad":"soy amable con otros perros, me gusta dormir."
+    },
+    {
+        "id":2,
+        "name":"Sudan",
+        "edad":"5",
+        "personalidad":"soy un poco nervioso pero muy amable, me gusta perseguir pelotas de tenis."
+    },
+    {
+        "id":3,
+        "name":"Pluto",
+        "edad":"16",
+        "personalidad":"soy muy callejero, me gusta comer lo que me dan los vecinos del recinto."
+    },
+    {
+        "id":4,
+        "name":"Nala",
+        "edad":"4",
+        "personalidad":"soy muy buena con la gente a veces tiro de la correa, me gusta salir a pasear."
+    },
+    {
+        "id":5,
+        "name":"Cachito",
+        "edad":"15",
+        "personalidad":"soy viejo pero me gusta ser sociable, tambien me gusta dormir con otros perros."
+    },
+    {
+        "id":6,
+        "name":"Simon",
+        "edad":"4",
+        "personalidad":"soy un poco desorejado, me gusta hacerme el loco con los perros pero me llevo bien con las familias."
+    },
+    {
+        "id":7,
+        "name":"Sabandija",
+        "edad":"10",
+        "personalidad":"soy un poco nervioso pero muy amable, me gusta perseguir pelotas de tenis."
+    },
+    {
+        "id":8,
+        "name":"Batuke",
+        "edad":"9",
+        "personalidad":"soy muy animico e imperactivo, me gusta el campo."
+    },
+    {
+        "id":9,
+        "name":"Negro",
+        "edad":"57",
+        "personalidad":"soy revoltoso, me gusta perseguir autos."
+    },
+    {
+        "id":10,
+        "name":"Violeta",
+        "edad":"3",
+        "personalidad":"soy rapida y como mucho, me gusta cazar moscas."
+    },
+    {
+        "id":11,
+        "name":"Billy",
+        "edad":"9",
+        "personalidad":"soy un depredador de palomas, me gusta cazar."
+    },
+    {
+        "id":12,
+        "name":"Couti",
+        "edad":"13",
+        "personalidad":"soy corredor de gatos, me gusta la musica."
+    },
+    {
+        "id":13,
+        "name":"Pepo",
+        "edad":"2",
+        "personalidad":"soy un loquillo, me gusta cazar nutrias."
+    },
+    {
+        "id":14,
+        "name":"Yago",
+        "edad":"6",
+        "personalidad":"soy un guardian de casa, me dormir en las afueras."
+    }
+
+]
